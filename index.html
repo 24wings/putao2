@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>葡萄园</title>
+
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <link rel="stylesheet" href="./css/jquery.fullpage.min.css">
+    <style>
+        #menu {
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            list-style-type: none;
+            z-index: 70;
+        }
+        
+        #menu li {
+            float: left;
+            margin: 0 10px 0 0;
+            font-size: 0.8em;
+        }
+        
+        #menu a {
+            float: left;
+            padding: 10px 15px;
+            background-color: #fff;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        
+        #menu .active a {
+            color: #fff;
+            background-color: #333;
+        }
+        
+        .section {
+            text-align: center;
+            font: 50px "Microsoft Yahei";
+            text-align: center;
+            color: #000;
+        }
+        
+        .section.section2 {
+            color: #fff;
+            font-size: 2em;
+        }
+        
+        .section.section3 {
+            color: gray;
+            font-size: 2em;
+            background: #fff;
+        }
+        
+        .section.section4 {
+            color: #fff;
+            font-size: 2em;
+        }
+        
+        .btn-groups {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .btn {
+            width: 20%;
+            display: inline-block;
+            border-radius: 14px;
+            background: deepskyblue;
+            color: #fff;
+            padding: 9px 1%;
+            font-size: 0.4em;
+        }
+        
+        .btn-block {
+            text-decoration: none;
+            font-size: 0.6em;
+            color: bisque;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            margin-top: 40px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="overflow: hidden; height: 100%;">
+    <ul id="menu">
+        <li data-menuanchor="page1" class="active"><a href="#page1">追求品质</a></li>
+        <li data-menuanchor="page2"><a href="#page2">天然优势</a></li>
+        <li data-menuanchor="page3"><a href="#page3">纯净甘美</a></li>
+        <li data-menuanchor="page4"><a href="#page4">服务到家</a></li>
+    </ul>
+    <div id="dowebok">
+        <div class="section section1">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491719261612&di=1211a2f347477e355d80d0f6fefa7731&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F110121%2F292-1101210J91673.jpg" alt="" width="100%">
+            <h6 class="left absolute" style="position: absolute;
+    left: 20%;
+    bottom: 20%;color:lightblue;">
+                我们追求的是品质
+            </h6>
+            <h6 class="right absolute" style="position: absolute;
+    left: 20%;
+    bottom: 10%;color:lightblue;">
+                每一粒都让你回味
+            </h6>
+
+        </div>
+        <div class="section section2 ">
+            <h6 class="title">宾川县农副产品合作社</h6>
+            <h6 class="left">宾川县位于云南省西部、金沙江南岸干热河谷地区。地处北纬25°23′～26°12′、东经100°16′～100°59′。</h6>
+            <h6 class="right">我们的葡萄在高海拔和特殊的气候下,有着得天独厚的种植环境，味道甜美,颜色诱人。</h6>
+
+
+        </div>
+        <div class="section section3">
+            <h6>选择我们的原因</h6>
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492317314&di=c8c26869d8c10caac436b6323cb0b8c0&imgtype=jpg&er=1&src=http%3A%2F%2Fnh.cnnb.com.cn%2Fpic%2F0%2F10%2F07%2F85%2F10078532_386106.jpg" alt="" style="width:100%">
+            <h6>我们公司的葡萄,经过严格的品质控制,无公害,无药残留,每一串都经过人工精心筛选的。</h6>
+        </div>
+        <div class="section  section4">
+            <h6>常年支持各种包装规格的红提,葡萄</h6>
+            <div class="button-group">
+                <div class="btn">3公斤</div>
+                <div class="btn">5公斤</div>
+                <div class="btn">8公斤</div>
+                <div class="btn">10公斤</div>
+
+            </div>
+            <a href="tel:18607109079" class="btn-block">电话联系:18607109079</a>
+        </div>
+    </div>
+
+    <script src="./js/jquery.min.js "></script>
+    <script src="./js/jquery.fullpage.min.js"></script>
+    <script>
+        $.fn.extend({
+            animateCss: function(animationName) {
+                var animationEnd =
+                    'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                this.addClass('animated ' + animationName).one(animationEnd, function() {
+                    $(this).removeClass('animated ' + animationName);
+                });
+            }
+        });
+    </script>
+    <script>
+        $(function() {
+            $('#dowebok').fullpage({
+                sectionsColor: ['#fff', '#4BBFC3', '#fff', '#f90'],
+                anchors: ['page1', 'page2', 'page3', 'page4'],
+                menu: '#menu',
+                afterLoad: function(anchorLink, index) {
+                    switch (index) {
+                        case 1:
+                            $('.section1').find('.left').animateCss('slideInLeft');
+                            $('.section1').find('.right').animateCss('slideInRight');
+                            break;
+                        case 2:
+                            $('.section2').find('.left').animateCss('slideInLeft');
+                            $('.section2').find('.right').animateCss('slideInRight');
+                            $('.section2').find('.title').animateCss('fadeInUp');
+                            break;
+                        case 3:
+                            $('.section1').find('.left').animateCss('slideInLeft');
+                            $('.section1').find('.right').animateCss('slideInRight');
+                            break;
+                        case 4:
+                            $('.callphone').show().animateCss('flash');
+                            break;
+                    }
+
+                },
+                onLeave: function(index, direction) {
+                    if (index == '2') {
+                        // $('.section2').find('p').delay(500).animate({
+                        // left: '-120%'
+                        // }, 1500, 'easeOutExpo');
+                    }
+                    if (index == '3') {
+                        // $('.section3').find('p').delay(500).animate({
+                        // bottom: '-120%'
+                        // }, 1500, 'easeOutExpo');
+                    }
+                    if (index == '4') {
+                        // $('.section4').find('p').fadeOut(2000);
+                    }
+                }
+
+            });
+        });
+    </script>
+</body>
+
+</html>
